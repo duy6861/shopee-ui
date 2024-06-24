@@ -137,6 +137,7 @@ html {
   list-style: none;
   padding: 8px 16px;
   display: none;
+  z-index: 1;
 }
 .select-input__link {
   text-decoration: none;

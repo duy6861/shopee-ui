@@ -154,6 +154,7 @@
   display: none;
   animation: fadeIn ease-in 0.5s;
   z-index: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .header__qr::before {
   content: "";
@@ -194,7 +195,7 @@
   animation: headerNotify ease-in 0.3s;
   will-change: opacity, transform;
   display: none;
-  z-index: 1;
+  z-index: 2;
   border-radius: 2px;
 }
 .header__notify::before {
@@ -346,6 +347,7 @@
   box-shadow: 0 1px 5px rgb(189, 189, 189);
   overflow: hidden;
   display: none;
+  z-index: 1;
 }
 .header__search-history-heading {
   margin: 6px 12px;
@@ -376,6 +378,7 @@
   border-left: 1px solid #e8e8e8;
   padding-left: 16px;
   position: relative;
+  z-index: 1;
 }
 .header__select-label {
   font-size: 1.4rem;
@@ -543,6 +546,8 @@
 .header__cart-list-item {
   padding-left: 0;
   list-style: none;
+  max-height: 55vh;
+  overflow-y: auto;
 }
 .header__cart-item {
   display: flex;
@@ -578,9 +583,18 @@
 }
 .header__cart-item-name {
   font-size: 1.4rem;
+  line-height: 2rem;
+  max-height: 4rem;
+  overflow: hidden;
+  flex: 1;
+  padding-right: 16px;
   font-weight: 500;
   color: var(--text-color);
   margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-align: left;
 }
 .header__cart-item-price {
   font-size: 1.4rem;
@@ -626,11 +640,12 @@
   border-radius: 2px;
 }
 .category-heading {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: var(--text-color);
   padding: 12px 16px;
   margin-top: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
 }
 .category-heading-icon {
   font-size: 1.4rem;
@@ -641,9 +656,20 @@
 .category-list {
   list-style: none;
   padding: 0 0 8px 0;
-  margin-left: 10px;
 }
 .category-item {
+  position: relative;
+}
+.category-item::before {
+  content: "";
+  border-top: 1px solid #e1e1e1;
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 0;
+}
+.category-item:first-child::before {
+  display: none;
 }
 .category-item-active .category-item__link {
   color: var(--primary-color);
@@ -888,7 +914,7 @@
   padding-top: 100%;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
+  background-position: top center;
 }
 .home-product-item__name {
   font-size: 1.4rem;
@@ -1026,4 +1052,101 @@ i.home-product-item__like-active {
   font-size: 1.3rem;
   color: var(--white-color);
   font-weight: 500;
+}
+/* Paginational */
+.paginational {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.paginational-item {
+  margin: 0 20px;
+  list-style: none;
+}
+.paginational-item-active .paginational-item-link {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+.paginational-item-link {
+  font-size: 2rem;
+  --height: 30px;
+  display: block;
+  text-decoration: none;
+  color: #939393;
+  min-width: 40px;
+  height: var(--height);
+  text-align: center;
+  line-height: var(--height);
+  border-radius: 2px;
+  font-weight: 300;
+}
+.home-product__paginational {
+  margin-top: 50px;
+  margin-bottom: 32px;
+}
+/* Footer */
+.footer {
+  border-top: 4px solid;
+  border-color: var(--primary-color);
+  padding-top: 12px;
+}
+.footer__heading {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+.footer__list {
+  padding-left: 0;
+  list-style: none;
+}
+.footer__list-item-link {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #737373;
+  padding: 4px 0;
+  display: block;
+  display: flex;
+  align-items: center;
+}
+.footer__list-item-link:hover {
+  color: var(--primary-color);
+}
+.footer__list-item-link:hover i {
+  color: #737373;
+}
+.footer__list-item-icon {
+  font-size: 1.8rem;
+  margin-top: -1px;
+  margin-right: 8px;
+}
+.footer__download {
+  display: flex;
+}
+.footer__down-qr {
+  width: 80px;
+  object-fit: contain;
+  border: 1px solid var(--border-color);
+}
+.footer__download-apps {
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer__download-link {
+  text-decoration: none;
+  color: transparent;
+}
+.footer__download-app-img {
+  height: 18px;
+}
+.footer__bottom {
+  padding: 8px 0;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+.footer__text {
+  margin: 0;
+  font-size: 1.4rem;
 }
